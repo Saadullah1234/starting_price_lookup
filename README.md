@@ -1,10 +1,10 @@
 # Starting Price Lookup
 
-When a user starts the program, the user gets a welcome message. The program then goes to the Bell Smartphone homepage and retrieve the names of the top 12 devices. The program then gives the user a list of these 12 devices that the user can choose. When a device is selected, Selenium runs in the background to visit the same web page, click on the requested device, and get the starting prices for all terms listed. Once the price is obtained, it prints the devices's name, the prices, and their respective terms to the command-line.
+When a user starts the program, the user gets a welcome message. The program then goes to the Bell Smartphone homepage and retrieve the names of the top 12 devices. The program then gives the user a list of these 12 devices that the user can choose. When a device is selected, Selenium runs in the background to visit the same web page, clicks on the requested device, then under Pricing and device options it clicks on pay a subsidized phone price and gets the starting prices for all terms listed. Once the price is obtained, it prints the devices's name, the prices, and their respective terms to the command-line.
 
 ## Instructions to run the project (Linux/MacOS)
 
-1) Download the project from GitHub
+1) Clone the project from GitHub
 
 2) Download chromedriver (Chrome) or geckodriver (Firefox) from their respective websites
 
@@ -35,44 +35,42 @@ python scraper.py
 
 ## Instructions to run the project (Windows)
 
-1) Download the project from GitHub
+1) Clone the project from GitHub
 
-2) Unzip the folder to a project directory
+2) Download chromedriver (Chrome) or geckodriver (Firefox) from their respective websites
 
-3) Download chromedriver (Chrome) or geckodriver (Firefox) from their respective websites
+3) Place the executable file of the web driver in the project directory
 
-4) Place the executable file of the web driver in the project directory
+4) Now add the PATH of the web driver to Windows path variable
 
-5) Now add the PATH of the web driver to Windows path variable
+5) Right-click on My Computer > Properties > Advanced tab > Environment Variables > System Variables
 
-6) Right-click on My Computer > Properties > Advanced tab > Environment Variables > System Variables
+6) Edit the PATH and copy paste the address of the local directory where the web driver is placed
 
-7) Edit the PATH and copy paste the address of the local directory where the web driver is placed
+7) Download get-pip.py to install PIP
 
-8) Download get-pip.py to install PIP
+8) Open Command Prompt
 
-9) Open Command Prompt
-
-10) To install PIP, type
+9) To install PIP, type
 
 ```bash
 python get-pip.py
 ```
 
-11) To install Selenium, type
+10) To install Selenium, type
 
 ```bash
 pip install selenium
 ```
 
-12) Now go to the project directory via the command prompt
+11) Now go to the project directory via the command prompt
 
-13) Now, to run the program, type 
+12) Now, to run the program, type 
 
 ```bash
 python scraper.py
 ```
 
-14) After execution, you will see the a welcome message, after which the Bell Smartphone Homepage will load in the foreground
+13) After execution, you will see the a welcome message, after which the Bell Smartphone Homepage will load in the foreground
 
-15) After the products have been printed on the CLI, the user can make a selection by typing the index number of the phone to select
+14) After the products have been printed on the CLI, the user can make a selection by typing the index number of the phone to select
