@@ -39,3 +39,38 @@ for i in range(0, len(product_keys)):
 
 selected_choice = int(input("Select a phone from list for further details: "))
 ############################################################################################################################################
+"""
+Part 4 & 5
+- When a device is selected, Selenium should run in the background to visit the same webpage , 
+	click on the requested device, then under Pricing and device options click on pay a subsidized 
+	phone price and get the starting prices for all terms listed
+- Once the price is obtained, it should print the devices's name, the prices, and their respective terms to the command-line
+"""
+
+# start a headless chrome session so selenium runs in the background
+
+driver = webdriver.Chrome(chrome_options=chrome_options)
+
+driver.get(homepage)
+
+product_list = driver.find_element_by_class_name("rsx-product-list-wrap-outer").find_elements_by_class_name("rsx-product-list-product")
+link = product_list[selected_choice-1].find_element_by_class_name("rsx-product-hotspot")
+link.click()
+
+radio_button = driver.find_element_by_id('pricing-options-radios').find_elements_by_class_name('rsx-label')[1]
+
+radio_button.click()
+
+subsidized_list = driver.find_element_by_id('bcx-order-now-group-subsidized').find_elements_by_class_name('bcx-order-now-box-body')
+
+for element in subsidized_list:
+	terms = []
+	price = element.find_element_by_class_name('rsx-price').text
+	term_elems = element.find_elements_by_tag_name('p')
+	for term_elem in term_elems:
+		terms.append(term_elem.text)
+	terms = " ".join(terms)
+	print("\n\nProduct details for: ", product_keys[selected_choice-1])
+	print("Price: {0}\nTerms: {1}".format(price, terms))
+
+driver.close()
