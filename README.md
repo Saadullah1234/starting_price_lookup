@@ -1,40 +1,78 @@
 # Starting Price Lookup
 
-At Bell, our sales department receives thousands of calls per day from customers inquiring about the starting prices of our smartphones. One of the sales directors is very hip and loves vintage things, especially vintage graphic cards! Everyone in the department must use new computers with weak graphic cards that cannot load most of today's graphic intensive websites.
+When a user starts the program, the user gets a welcome message. The program then goes to the Bell Smartphone homepage and retrieve the names of the top 12 devices. The program then gives the user a list of these 12 devices that the user can choose. When a device is selected, Selenium runs in the background to visit the same web page, click on the requested device, and get the starting prices for all terms listed. Once the price is obtained, it prints the devices's name, the prices, and their respective terms to the command-line.
 
-To help our sales people get information quickly to serve our customers more efficiently, we need to create a program that spits out starting prices for a given phone in a CLI (Command-line interface).
+## Instructions to run the project (Linux/MacOS)
 
-## Technology
+1) Download the project from GitHub
 
-Below is a list of technology to use:
+2) Download chromedriver (Chrome) or geckodriver (Firefox) from their respective websites
 
-- You can use any programming language, we recommend: Ruby, Python, or Java
-- You can use any environment, we recommend a linux environment
-- Selenium WebDriver
-- A driver like chromedriver (chrome) or geckodriver (firefox)
+3) Place the executable file of the web driver in the project directory
 
-## Expectations
+4) Open Terminal
 
-- When a user starts the program, the user should get a welcome message
-- The program should then go to the [Bell Smartphone page](https://www.bell.ca/Mobility/Smartphones_and_mobile_internet_devices) and retrieve the names of the top 12 devices
-- The program should then give the user a list of these 12 devices that the user can choose 
-- When a device is selected, Selenium should run in the background to visit the same [webpage](https://www.bell.ca/Mobility/Smartphones_and_mobile_internet_devices) , click on the requested device, and get the starting prices for all terms listed
-- Once the price is obtained, it should print the devices's name, the prices, and their respective terms to the command-line
+5) Go to the project directory
 
-## Things to keep in mind
+6) To install Selenium Webdrvier, type
 
-- You should build the CLI so that it allows the sales staff to find the price efficiently
-- How you make the CLI user-friendly is entirely up to you
-- Make sure you have a detailed README with instructions on how to run your program
+```
+pip install selenium
+```
 
-## How to manage your work
+7) Now, to run the program, type 
 
-- Create a fork of this repo
-- Make sure the repo is set to **private** and add me to the repo `jbhandari`
-- Make sure to commit your code in logical portions
-  - ex: `Added ability to fetch price`
+```
+python scraper.py
+```
 
-## Additional Information
+8) After execution, you will see the a welcome message, after which the Bell Smartphone Homepage will load in the foreground
 
-- Should you need any further clarifications please do not hesitate to contact me via email at `jatin.bhandari@bell.ca`
-- Once the deadline has been reached (set by the hiring manager), the repo will be cloned and then analyzed privately
+9) After the products have been printed on the CLI, the user can make a selection by typing the index number of the phone to select
+
+
+
+
+## Instructions to run the project (Windows)
+
+1) Download the project from GitHub
+
+2) Unzip the folder to a project directory
+
+3) Download chromedriver (Chrome) or geckodriver (Firefox) from their respective websites
+
+4) Place the executable file of the web driver in the project directory
+
+5) Now add the PATH of the web driver to Windows path variable
+
+6) Right-click on My Computer > Properties > Advanced tab > Environment Variables > System Variables
+
+7) Edit the PATH and copy paste the address of the local directory where the web driver is placed
+
+8) Download get-pip.py to install PIP
+
+9) Open Command Prompt
+
+10) To install PIP, type
+
+```bash
+python get-pip.py
+```
+
+11) To install Selenium, type
+
+```bash
+pip install selenium
+```
+
+12) Now go to the project directory via the command prompt
+
+13) Now, to run the program, type 
+
+```bash
+python scraper.py
+```
+
+14) After execution, you will see the a welcome message, after which the Bell Smartphone Homepage will load in the foreground
+
+15) After the products have been printed on the CLI, the user can make a selection by typing the index number of the phone to select
