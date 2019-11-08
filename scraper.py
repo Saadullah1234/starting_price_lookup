@@ -4,21 +4,23 @@ Module for Starting Price lookup for Bell Mobility Devices.
 The program lists out names for Bell Mobility top 12 devices
 and displays prices and terms for the selected device.
 """
-
+# Importing the necessary libraries
 from time import sleep
-
 import selenium.webdriver.support.ui as ui
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
+# Setting arguments for headless chrome
 WINDOW_SIZE = "1600,900"
 DRIVER_OPTIONS = Options()
 DRIVER_OPTIONS.add_argument("--headless")
 DRIVER_OPTIONS.add_argument("--window-size=%s" % WINDOW_SIZE)
 DRIVER_OPTIONS.add_argument("--log-level=3")
 DRIVER_OPTIONS.add_argument("--silent")
+
+# Desired homepage
 HOMEPAGE = "https://www.bell.ca/Mobility/Smartphones_and_mobile_internet_devices"
 print("\n\n\n\t\t\033[0;32;40m Welcome to the Bell"
 	  " Mobility Smartphone Homepage!\n\n\n")
@@ -26,8 +28,12 @@ sleep(2)
 print("\t\t Canada's Largest Telecommunication Company\n\n\n")
 sleep(2)
 PRODUCT_DICT = {}
+
+# Initialize webdriver and start a session
 DRIVER = webdriver.Chrome('./chromedriver')
 DRIVER.get(HOMEPAGE)
+
+# Find the required element and the contained product list
 PRODUCT_LIST = DRIVER.find_element_by_class_name(
 	"rsx-product-list-wrap-outer").find_elements_by_class_name(
 		"rsx-product-list-product")
@@ -40,6 +46,8 @@ for product in PRODUCT_LIST[:12]:
 
 DRIVER.close()
 PRODUCT_KEYS = list(PRODUCT_DICT.keys())
+
+# Display top 12 options to the user
 print("\n\nThe list below shows top 12 devices of Bell Mobility:\n\n")
 for i, _ in enumerate(PRODUCT_KEYS):
 	print(" {0}.\t{1}".format(i + 1, PRODUCT_KEYS[i]))
@@ -56,6 +64,7 @@ try:
 			print("\n\033[0;31;40mPlease enter a valid index number "
 				  "from the list.\033[0;32;40m")
 
+	# Start another session but in background this time (options=DRIVER_OPTIONS)
 	DRIVER = webdriver.Chrome(executable_path='./chromedriver',
 								options=DRIVER_OPTIONS)
 	DRIVER.get(HOMEPAGE)
@@ -78,6 +87,7 @@ try:
 			"bcx-order-now-box-body")
 	print("\n\nProduct details for: ", PRODUCT_KEYS[SELECTED_CHOICE - 1])
 
+	# Extract terms and prices from the fetched elements
 	for element in SUBSIDIZED_LIST:
 		terms = []
 		price = element.find_element_by_class_name("rsx-price").text
